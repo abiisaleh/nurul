@@ -1,0 +1,8 @@
+static_sites:
+  - name: app
+    build_command: "composer install --no-dev && cp .env.example .env && php spark migrate && php spark db:seed"
+    environment:
+      PHP_VERSION: "8.0"
+    routes:
+      - src: /(.*)$
+        dest: public/$1
