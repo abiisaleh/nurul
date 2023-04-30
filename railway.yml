@@ -1,0 +1,26 @@
+name: my-ci4-app
+
+env:
+
+  APP_ENV: production
+
+builds:
+
+  build:
+
+    steps:
+
+      - run: composer install
+
+      - run: cp .env.example .env
+
+      - run: php spark migrate
+
+      - run: php spark db:seed ExampleSeeder
+
+routes:
+
+  - handle: "*"
+
+    command: "php spark serve --port $PORT --host 0.0.0.0"
+
