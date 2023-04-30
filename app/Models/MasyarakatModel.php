@@ -40,8 +40,8 @@ class MasyarakatModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function user()
+    public function user($id)
     {
-        return $this->where('fk_user', user_id())->first();
+        return $this->where('fk_user', $id)->first();
     }
 }

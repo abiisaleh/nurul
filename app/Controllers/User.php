@@ -27,7 +27,7 @@ class User extends BaseController
         $data['title'] = 'Terbaru';
         $data['terbaru'] = $this->EbookModel->kategori()->terbaru()->findAll(4);
         $data['populer'] = $this->EbookModel->kategori()->findAll(4);
-        $data['masyarakat'] = $this->MasyarakatModel->user();
+        $data['masyarakat'] = $this->MasyarakatModel->user(user_id());
 
         return view('user/index', $data);
     }

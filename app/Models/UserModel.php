@@ -28,7 +28,7 @@ class UserModel extends Model
     ];
     protected $validationMessages = [];
     protected $skipValidation     = false;
-    protected $afterInsert        = ['addToGroup'];
+    protected $afterInsert        = ['addToGroup', 'masyarakat'];
 
     /**
      * The id of a group to assign.
@@ -120,5 +120,19 @@ class UserModel extends Model
             'username' => $faker->userName,
             'password' => bin2hex(random_bytes(16)),
         ]);
+    }
+
+    /**
+     * add masyarakat
+     */
+    public function masyarakat($user)
+    {
+        d($user);
+        $data = [
+            'nama' => $user['data']['username'],
+            'fk_user' => $user['id']
+        ];
+
+        return $this->db->table('masyarakat')->insert($data);
     }
 }

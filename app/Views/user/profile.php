@@ -8,10 +8,11 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form form-horizontal" method="POST" id="form">
+                        <form class="form form-horizontal" action="api/masyarakat/save" method="POST" id="form">
                             <div class="form-body">
                                 <div class="row">
                                     <input type="text" name="fk_user" value="<?= user_id(); ?>" hidden>
+                                    <input type="text" name="id" value="<?= $user['id']; ?>" hidden>
                                     <div class="col-md-4">
                                         <label for="inputnama">Nama</label>
                                     </div>
@@ -64,20 +65,3 @@
     </div>
 </section>
 <?php $this->endsection('content'); ?>
-
-<?php $this->section('script'); ?>
-<script>
-    //Tambah Data
-    $('#form').submit(function(e) {
-        e.preventDefault()
-        $.ajax({
-            url: 'admin/masyarakat/save',
-            type: 'POST',
-            data: $(this).serialize(),
-            success: function() {
-                alert('data berhasil disimpan')
-            }
-        })
-    })
-</script>
-<?php $this->endsection('script'); ?>

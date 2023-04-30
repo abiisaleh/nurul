@@ -31,6 +31,10 @@ class Masyarakat extends BaseController
     {
         $data = $this->request->getPost();
         $this->MasyarakatModel->save($data);
+
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
     }
 
     public function delete()
