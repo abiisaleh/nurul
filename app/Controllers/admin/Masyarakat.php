@@ -24,7 +24,10 @@ class Masyarakat extends BaseController
     public function show()
     {
         $data['data'] = $this->MasyarakatModel->find();
-        return $this->response->setJSON($data);
+
+        $kodefikasi = $this->MasyarakatModel->kodefikasi($data);
+
+        return $this->response->setJSON($kodefikasi);
     }
 
     public function save()

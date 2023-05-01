@@ -48,4 +48,13 @@ class KategoriModel extends Model
 
         return $data;
     }
+
+    public function kodefikasi($data)
+    {
+        foreach ($data['data'] as &$row) {
+            $row['kode_id'] = 'K-' . str_pad($row['id'], 3, 0, STR_PAD_LEFT);
+        }
+
+        return $data;
+    }
 }

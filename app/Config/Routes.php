@@ -33,6 +33,7 @@ $routes->get('/', 'user::index');
 $routes->get('buku(:any)', 'user::buku$1');
 $routes->get('pinjam', 'user::pinjam');
 $routes->get('user', 'user::user');
+$routes->post('user/upload', 'user::upload');
 $routes->get('about', 'user::about');
 $routes->get('baca(:any)', 'user::baca$1');
 $routes->post('api/pinjam/save', 'admin\peminjaman::save');

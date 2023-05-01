@@ -23,7 +23,9 @@ class Ebook extends BaseController
     public function show()
     {
         $data['data'] = $this->EbookModel->kategori()->find();
-        return $this->response->setJSON($data);
+        $kodefikasi = $this->EbookModel->kodefikasi($data);
+
+        return $this->response->setJSON($kodefikasi);
     }
 
     public function save()

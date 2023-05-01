@@ -62,7 +62,7 @@ class PeminjamanModel extends Model
         $stok = $this->where('fk_ebook', $ebook)->where('status', 'pinjam')->countAllResults();
 
         if ($stok >= 10) {
-            echo 'stok sudah habis';
+            session()->setFlashdata('pesan', 'stok sudah habis');
             return $this->abort();
         }
 
@@ -79,7 +79,7 @@ class PeminjamanModel extends Model
         $cekBuku = $this->where('fk_ebook', $ebook)->where('fk_masyarakat', $masyarakat)->where('status', 'pinjam')->find();
 
         if (!empty($cekBuku)) {
-            echo 'buku sudah dipinjam';
+            session()->setFlashdata('pesan', 'buku sudah dipinjam');
             return $this->abort();
         }
 
@@ -112,5 +112,14 @@ class PeminjamanModel extends Model
     {
         $data['tanggal_kembali'] = date('Y-m-d', strtotime('+1 week'));
         return $this->save($data);
+    }
+
+    public function kodefikasi($data)
+    {
+        foreach ($data['data'] as &$row) {
+            $row['kode_id'] = 'P-' . str_pad($row['id'], 3, 0, STR_PAD_LEFT);
+        }
+
+        return $data;
     }
 }

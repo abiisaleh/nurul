@@ -26,7 +26,7 @@ class User extends BaseController
     {
         $data['title'] = 'Terbaru';
         $data['terbaru'] = $this->EbookModel->kategori()->terbaru()->findAll(4);
-        $data['populer'] = $this->EbookModel->kategori()->findAll(4);
+        $data['populer'] = $this->EbookModel->populer()->findAll(4);
         $data['masyarakat'] = $this->MasyarakatModel->user(user_id());
 
         return view('user/index', $data);
@@ -43,7 +43,8 @@ class User extends BaseController
     public function buku()
     {
         $data['title'] = 'Buku';
-        $data['masyarakat'] = $this->MasyarakatModel->user();
+        $data['masyarakat'] = $this->MasyarakatModel->user(user_id());
+        $data['kategori'] = $this->KategoriModel->findAll();
 
         $keyword = $this->request->getVar('cari');
         $kategori = $this->request->getVar('kategori');
@@ -58,6 +59,7 @@ class User extends BaseController
             $ebook = $ebook->cari($keyword);
         }
 
+        $data['keyword'] = $keyword;
         $data['ebook'] = $ebook->paginate('10');
         $data['pager'] = $ebook->pager->makeLinks(1, 10, $ebook->pager->getLastPage(), 'custom');
 
@@ -70,6 +72,15 @@ class User extends BaseController
         $data['user'] = $this->MasyarakatModel->where('fk_user', user_id())->first();
 
         return view('user/profile', $data);
+    }
+
+    public function upload()
+    {
+        $file = $this->request->getFile('avatar');
+        $namaFile = user()->username . '-avatar.jpg';
+
+        $file->move(FCPATH . 'uploads', $namaFile, true);
+        return json_encode(['status' => 'success']);
     }
 
     public function about()

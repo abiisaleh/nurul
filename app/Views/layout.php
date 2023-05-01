@@ -55,7 +55,7 @@
                         <li class="sidebar-title">Menu</li>
 
                         <li class="sidebar-item" id="Terbaru">
-                            <a href="/" class="sidebar-link">
+                            <a href="<?= base_url() ?>" class="sidebar-link">
                                 <i class="bi bi-compass-fill"></i>
                                 <span>Jelajah</span>
                             </a>
@@ -88,42 +88,42 @@
 
                             <li class="sidebar-item" id="Dashboard">
                                 <a href="admin" class="sidebar-link">
-                                    <i class="bi bi-grid-fill"></i>
+                                    <i class="bi bi-speedometer"></i>
                                     <span>Dashboard</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item" id="Data Buku">
                                 <a href="admin/ebook" class="sidebar-link">
-                                    <i class="bi bi-book"></i>
+                                    <i class="bi bi-book-fill"></i>
                                     <span>Data Buku</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item" id="Data Kategori">
                                 <a href="admin/kategori" class="sidebar-link">
-                                    <i class="bi bi-box2"></i>
+                                    <i class="bi bi-grid-fill"></i>
                                     <span>Data Kategori</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item" id="Data Masyarakat">
                                 <a href="admin/masyarakat" class="sidebar-link">
-                                    <i class="bi bi-people"></i>
+                                    <i class="bi bi-people-fill"></i>
                                     <span>Data Masyarakat</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item" id="Data Peminjaman">
                                 <a href="admin/peminjaman" class="sidebar-link">
-                                    <i class="bi bi-bookmark-check"></i>
+                                    <i class="bi bi-bookmark-check-fill"></i>
                                     <span>Data Peminjaman</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item" id="Laporan">
                                 <a href="admin/laporan" class="sidebar-link">
-                                    <i class="bi bi-printer"></i>
+                                    <i class="bi bi-printer-fill"></i>
                                     <span>Laporan</span>
                                 </a>
                             </li>
@@ -221,8 +221,11 @@
                 <div class="page-heading">
                     <div class="page-title">
                         <div class="row">
-                            <div class="col-12 col-md-6 order-md-1 order-last">
+                            <div class="col-12 col-sm-6 order-md-1 order-last">
                                 <h3><?= $title ?></h3>
+                            </div>
+                            <div class="col-12 col-sm-6 order-md-1 order-last">
+                                <?php $this->renderSection('tools'); ?>
                             </div>
                         </div>
                     </div>

@@ -127,7 +127,6 @@ class UserModel extends Model
      */
     public function masyarakat($user)
     {
-        d($user);
         $data = [
             'nama' => $user['data']['username'],
             'fk_user' => $user['id']

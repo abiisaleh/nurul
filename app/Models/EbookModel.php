@@ -47,7 +47,7 @@ class EbookModel extends Model
 
     public function populer()
     {
-        return $this->join('peminjaman', 'fk_ebook = ebook.id');
+        return $this->join('peminjaman', 'fk_ebook = ebook.id')->kategori()->selectCount('ebook.id', 'total_dibaca')->groupBy('ebook.id');
     }
 
     public function terbaru()
@@ -58,5 +58,14 @@ class EbookModel extends Model
     public function cari($keyword)
     {
         return $this->like('judul', $keyword)->orLike('penulis', $keyword)->orLike('penerbit', $keyword);
+    }
+
+    public function kodefikasi($data)
+    {
+        foreach ($data['data'] as &$row) {
+            $row['kode_id'] = 'B-' . str_pad($row['id'], 3, 0, STR_PAD_LEFT);
+        }
+
+        return $data;
     }
 }

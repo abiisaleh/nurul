@@ -1,5 +1,22 @@
 <?php $this->extend('layout'); ?>
 
+<?php $this->section('tools'); ?>
+<div class="float-start float-sm-end">
+    <div class="btn-group mb-1">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle me-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="bi bi-funnel"></i> Kategori
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <?php foreach ($kategori as $value) : ?>
+                    <a class="dropdown-item" href="buku?kategori=<?= $value['id'] ?>"><?= ucfirst($value['nama']) ?></a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $this->endsection('tools'); ?>
+
 <?php $this->section('content'); ?>
 <section class="section">
     <div class="row">

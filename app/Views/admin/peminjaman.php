@@ -1,15 +1,16 @@
 <?php $this->extend('layout'); ?>
 
+<?php $this->section('tools'); ?>
+<div class="float-start float-sm-end">
+  <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#modal-add">
+    <i class="bi bi-plus"></i> Tambah Data
+  </button>
+</div>
+<?php $this->endsection('tools'); ?>
+
 <?php $this->section('content'); ?>
 <section class="section">
   <div class="card">
-    <div class="card-header">
-      <div class="float-start float-lg-end">
-        <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#modal-add">
-          <i class="bi bi-plus"></i> Tambah Data
-        </button>
-      </div>
-    </div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-hover" id="tabel">
@@ -66,7 +67,11 @@
                   <label for="inputstatus">Status</label>
                 </div>
                 <div class="col-md-8 form-group">
-                  <select name="status" id="inputstatus" class="form-select"></select>
+                  <select name="status" id="inputstatus" class="form-select">
+                    <option>-</option>
+                    <option>pinjam</option>
+                    <option>selesai</option>
+                  </select>
                 </div>
 
                 <div class="col-sm-12 d-flex justify-content-end">
@@ -128,7 +133,7 @@
     processing: true,
     ajax: window.location.href + '/show',
     columns: [{
-        "data": "id"
+        "data": "kode_id"
       },
       {
         "data": "tanggal_pinjam"

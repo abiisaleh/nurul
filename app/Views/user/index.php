@@ -59,7 +59,7 @@
                     alert('Berhasil dipinjam')
                 },
                 error: function() {
-                    alert('Stok sudah habis atau buku sudah dipinjam')
+                    alert('<?= session()->getFlashdata('pesan') ?>')
                 }
             })
         <?php else : ?>

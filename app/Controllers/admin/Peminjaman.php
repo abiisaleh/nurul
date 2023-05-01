@@ -23,7 +23,9 @@ class Peminjaman extends BaseController
     public function show()
     {
         $data['data'] = $this->PeminjamanModel->ebook()->masyarakat()->find();
-        return $this->response->setJSON($data);
+        $kodefikasi = $this->PeminjamanModel->kodefikasi($data);
+
+        return $this->response->setJSON($kodefikasi);
     }
 
     public function save()

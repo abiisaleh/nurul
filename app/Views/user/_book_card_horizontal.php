@@ -7,7 +7,7 @@
             <div class="col-8 py-1">
                 <div class="card-body">
                     <h5 class="card-title"><?= $judul ?></h5>
-                    <span class="badge bg-light-info"><?= ucfirst($kategori) ?></span>
+                    <a href="buku?kategori=<?= $fk_kategori ?>"><span class="badge bg-light-info"><?= ucfirst($kategori) ?></span></a>
                     <p class="card-text mt-3">
                         <?= $penulis ?> • <?= date_parse($rilis)['year'] ?>
                     </p>

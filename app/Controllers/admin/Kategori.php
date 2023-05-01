@@ -23,7 +23,9 @@ class Kategori extends BaseController
     public function show()
     {
         $data['data'] = $this->KategoriModel->find();
-        return $this->response->setJSON($data);
+        $kodefikasi = $this->KategoriModel->kodefikasi($data);
+
+        return $this->response->setJSON($kodefikasi);
     }
 
     public function save()

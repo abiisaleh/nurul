@@ -44,4 +44,20 @@ class MasyarakatModel extends Model
     {
         return $this->where('fk_user', $id)->first();
     }
+
+    public function monthUser()
+    {
+        return $this->db->table('users')->select('MONTH(created_at) as month, COUNT(*) as total')
+            ->groupBy('MONTH(created_at)')
+            ->get()->getResultArray();
+    }
+
+    public function kodefikasi($data)
+    {
+        foreach ($data['data'] as &$row) {
+            $row['kode_id'] = 'M-' . str_pad($row['id'], 3, 0, STR_PAD_LEFT);
+        }
+
+        return $data;
+    }
 }
