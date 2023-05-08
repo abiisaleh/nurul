@@ -29,38 +29,38 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'user::index');
-$routes->get('buku(:any)', 'user::buku$1');
-$routes->get('pinjam', 'user::pinjam');
-$routes->get('user', 'user::user');
-$routes->post('user/upload', 'user::upload');
-$routes->get('about', 'user::about');
-$routes->get('baca(:any)', 'user::baca$1');
-$routes->post('api/pinjam/save', 'admin\peminjaman::save');
-$routes->post('api/masyarakat/save', 'admin\masyarakat::save');
+$routes->get('/', 'User::index');
+$routes->get('buku(:any)', 'User::buku$1');
+$routes->get('pinjam', 'User::pinjam');
+$routes->get('user', 'User::user');
+$routes->post('user/upload', 'User::upload');
+$routes->get('about', 'User::about');
+$routes->get('baca(:any)', 'User::baca$1');
+$routes->post('api/pinjam/save', 'admin\Peminjaman::save');
+$routes->post('api/masyarakat/save', 'admin\Masyarakat::save');
 
-$routes->get('admin', 'admin\dashboard::index');
+$routes->get('admin', 'admin\Dashboard::index');
 
-$routes->get('admin/kategori', 'admin\kategori::index');
-$routes->get('admin/kategori/show', 'admin\kategori::show');
-$routes->post('admin/kategori/save', 'admin\kategori::save');
-$routes->post('admin/kategori/delete', 'admin\kategori::delete');
+$routes->get('admin/kategori', 'admin\Kategori::index');
+$routes->get('admin/kategori/show', 'admin\Kategori::show');
+$routes->post('admin/kategori/save', 'admin\Kategori::save');
+$routes->post('admin/kategori/delete', 'admin\Kategori::delete');
 
-$routes->get('admin/ebook', 'admin\ebook::index');
-$routes->get('admin/ebook/show', 'admin\ebook::show');
-$routes->post('admin/ebook/save', 'admin\ebook::save');
-$routes->post('admin/ebook/delete', 'admin\ebook::delete');
-$routes->post('admin/ebook/upload', 'admin\ebook::upload');
+$routes->get('admin/ebook', 'admin\Ebook::index');
+$routes->get('admin/ebook/show', 'admin\Ebook::show');
+$routes->post('admin/ebook/save', 'admin\Ebook::save');
+$routes->post('admin/ebook/delete', 'admin\Ebook::delete');
+$routes->post('admin/ebook/upload', 'admin\Ebook::upload');
 
-$routes->get('admin/masyarakat', 'admin\masyarakat::index');
-$routes->get('admin/masyarakat/show', 'admin\masyarakat::show');
-$routes->post('admin/masyarakat/save', 'admin\masyarakat::save');
-$routes->post('admin/masyarakat/delete', 'admin\masyarakat::delete');
+$routes->get('admin/masyarakat', 'admin\Masyarakat::index');
+$routes->get('admin/masyarakat/show', 'admin\Masyarakat::show');
+$routes->post('admin/masyarakat/save', 'admin\Masyarakat::save');
+$routes->post('admin/masyarakat/delete', 'admin\Masyarakat::delete');
 
-$routes->get('admin/peminjaman', 'admin\peminjaman::index');
-$routes->get('admin/peminjaman/show', 'admin\peminjaman::show');
-$routes->post('admin/peminjaman/save', 'admin\peminjaman::save');
-$routes->post('admin/peminjaman/delete', 'admin\peminjaman::delete');
+$routes->get('admin/peminjaman', 'admin\Peminjaman::index');
+$routes->get('admin/peminjaman/show', 'admin\Peminjaman::show');
+$routes->post('admin/peminjaman/save', 'admin\Peminjaman::save');
+$routes->post('admin/peminjaman/delete', 'admin\Peminjaman::delete');
 
 /*
  * --------------------------------------------------------------------

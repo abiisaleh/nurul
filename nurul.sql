@@ -296,7 +296,7 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 
 CREATE TABLE `peminjaman` (
   `id` int(5) UNSIGNED NOT NULL,
-  `tanggal_pinjam` date NOT NULL DEFAULT current_timestamp(),
+  `tanggal_pinjam` date NOT NULL,
   `tanggal_kembali` date NOT NULL,
   `status` enum('pinjam','selesai') NOT NULL DEFAULT 'pinjam',
   `fk_masyarakat` int(5) UNSIGNED NOT NULL,
