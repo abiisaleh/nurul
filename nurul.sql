@@ -83,7 +83,7 @@ CREATE TABLE `auth_groups_users` (
 
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 1),
-(2, 2),
+(1, 2),
 (2, 3),
 (2, 4);
 
