@@ -142,7 +142,14 @@
         "data": "tanggal_kembali"
       },
       {
-        "data": "status"
+        "data": "status",
+        "render": function(data) {
+          if (data == 'pinjam') {
+            return '<span class="badge bg-warning text-dark">'+data+'</span>'
+          } else {
+            return '<span class="badge bg-success">'+data+'</span>'
+          }
+        }
       },
       {
         "data": "masyarakat"
