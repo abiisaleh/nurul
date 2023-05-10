@@ -12,7 +12,7 @@
                             <div class="form-body">
                                 <div class="row">
                                     <input type="text" name="fk_user" value="<?= user_id(); ?>" hidden>
-                                    <input type="text" name="id" value="<?= $user['id']; ?>" hidden>
+                                    <input type="text" name="id" value="<?= empty($user) ? '' : $user['id']; ?>" hidden>
                                     <div class="col-md-4">
                                         <label for="inputnama">Nama</label>
                                     </div>
