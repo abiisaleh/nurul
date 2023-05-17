@@ -26,6 +26,10 @@
 
 					<?= view('App\Views\Auth\_message_block') ?>
 
+					<div class="alert alert-success px-5">
+						username: admin | password: perpus123
+					</div>
+
 					<form action="<?= url_to('login') ?>" method="post">
 						<?= csrf_field() ?>
 						<?php if ($config->validFields === ['email']) : ?>

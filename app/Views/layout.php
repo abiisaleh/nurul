@@ -82,7 +82,7 @@
                             </a>
                         </li>
 
-                        <?php if (in_groups('admin')) : ?>
+                        <?php if (logged_in() & !in_groups('masyarakat')) : ?>
 
                             <li class="sidebar-title">Admin</li>
 
@@ -121,6 +121,8 @@
                                 </a>
                             </li>
 
+                            <?php if (in_groups('kepala')) : ?>
+
                             <li class="sidebar-item" id="Laporan">
                                 <a href="admin/laporan" class="sidebar-link">
                                     <i class="bi bi-printer-fill"></i>
@@ -128,6 +130,7 @@
                                 </a>
                             </li>
 
+                            <?php endif; ?>
                         <?php endif; ?>
 
                     </ul>

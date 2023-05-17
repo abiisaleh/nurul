@@ -62,6 +62,8 @@ $routes->get('admin/peminjaman/show', 'admin\Peminjaman::show');
 $routes->post('admin/peminjaman/save', 'admin\Peminjaman::save');
 $routes->post('admin/peminjaman/delete', 'admin\Peminjaman::delete');
 
+$routes->get('admin/laporan', 'admin\Laporan::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
