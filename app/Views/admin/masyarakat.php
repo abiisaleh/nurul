@@ -13,19 +13,7 @@
   <div class="card">
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-hover" id="tabel">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nama</th>
-              <th>Jenis Kelamin</th>
-              <th>Alamat</th>
-              <th>Telp</th>
-              <th>Umur</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-        </table>
+        <table class="table table-hover" id="tabel"></table>
       </div>
     </div>
   </div>
@@ -126,25 +114,25 @@
     processing: true,
     ajax: window.location.href + '/show',
     columns: [{
-        "data": "kode_id"
+        "title": "#","data": "kode_id"
       },
       {
-        "data": "nama"
+        "title": "Nama","data": "nama"
       },
       {
-        "data": "jenis_kelamin"
+        "title": "Jenis Kelamin","data": "jenis_kelamin"
       },
       {
-        "data": "alamat"
+        "title": "Alamat","data": "alamat"
       },
       {
-        "data": "telp"
+        "title": "Telp","data": "telp"
       },
       {
-        "data": "tanggal_lahir"
+        "title": "Tanggal Lahir","data": "tanggal_lahir"
       },
       {
-        "data": ""
+        "title": "Aksi"
       },
     ],
     columnDefs: [{

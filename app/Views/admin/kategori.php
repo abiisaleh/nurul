@@ -13,16 +13,7 @@
   <div class="card">
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-hover" id="tabel">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nama Kategori</th>
-              <th>Total Buku</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-        </table>
+        <table class="table table-hover" id="tabel"></table>
       </div>
     </div>
   </div>
@@ -92,16 +83,16 @@
     searching: false,
     ajax: window.location.href + '/show',
     columns: [{
-        "data": "kode_id"
+        "title": "#", "data": "kode_id"
       },
       {
-        "data": "nama"
+        "title": "Kategori", "data": "nama"
       },
       {
-        "data": "total"
+        "title": "Total", "data": "total"
       },
       {
-        "data": ""
+        "title": "Aksi"
       },
     ],
     columnDefs: [{

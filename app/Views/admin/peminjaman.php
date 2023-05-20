@@ -13,19 +13,7 @@
   <div class="card">
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-hover" id="tabel">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Tanggal Pinjam</th>
-              <th>Tanggal Pengembalian</th>
-              <th>Status</th>
-              <th>Nama Peminjam</th>
-              <th>Judul Buku</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-        </table>
+        <table class="table table-hover" id="tabel"></table>
       </div>
     </div>
   </div>
@@ -133,15 +121,19 @@
     processing: true,
     ajax: window.location.href + '/show',
     columns: [{
+        "title": "#",
         "data": "kode_id"
       },
       {
+        "title": "Tanggal Pinjam",
         "data": "tanggal_pinjam"
       },
       {
+        "title": "Tanggal Kembali",
         "data": "tanggal_kembali"
       },
       {
+        "title": "Status",
         "data": "status",
         "render": function(data) {
           if (data == 'pinjam') {
@@ -152,13 +144,15 @@
         }
       },
       {
+        "title": "Peminjam",
         "data": "masyarakat"
       },
       {
+        "title": "Buku",
         "data": "ebook"
       },
       {
-        "data": ""
+        "title": "Aksi"
       },
     ],
     columnDefs: [{
