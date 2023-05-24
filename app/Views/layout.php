@@ -180,7 +180,7 @@
                                     <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                         <div class="user-menu d-flex">
                                             <div class="user-name text-end me-3">
-                                                <h6 class="mb-0 text-gray-600"><?= (in_groups('admin')) ? ucfirst(user()->username) : ucfirst($user['nama']) ?></h6>
+                                                <h6 class="mb-0 text-gray-600"><?= ucfirst(user()->username) ?></h6>
                                                 <p class="mb-0 text-sm text-gray-600"><?= (in_groups('admin')) ? 'admin' : ((in_groups('kepala')) ? 'Kepala Balai' : 'masyarakat') ?></p>
                                             </div>
                                             <div class="user-img d-flex align-items-center">
