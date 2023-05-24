@@ -123,12 +123,12 @@
 
                             <?php if (in_groups('kepala')) : ?>
 
-                            <li class="sidebar-item" id="Laporan">
-                                <a href="admin/laporan" class="sidebar-link">
-                                    <i class="bi bi-printer-fill"></i>
-                                    <span>Laporan</span>
-                                </a>
-                            </li>
+                                <li class="sidebar-item" id="Laporan">
+                                    <a href="admin/laporan" class="sidebar-link">
+                                        <i class="bi bi-printer-fill"></i>
+                                        <span>Laporan</span>
+                                    </a>
+                                </li>
 
                             <?php endif; ?>
                         <?php endif; ?>
@@ -181,7 +181,7 @@
                                         <div class="user-menu d-flex">
                                             <div class="user-name text-end me-3">
                                                 <h6 class="mb-0 text-gray-600"><?= (in_groups('admin')) ? ucfirst(user()->username) : ucfirst($user['nama']) ?></h6>
-                                                <p class="mb-0 text-sm text-gray-600"><?= (in_groups('admin')) ? 'admin' : 'masyarakat' ?></p>
+                                                <p class="mb-0 text-sm text-gray-600"><?= (in_groups('admin')) ? 'admin' : ((in_groups('kepala')) ? 'Kepala Balai' : 'masyarakat') ?></p>
                                             </div>
                                             <div class="user-img d-flex align-items-center">
                                                 <div class="avatar avatar-md">
