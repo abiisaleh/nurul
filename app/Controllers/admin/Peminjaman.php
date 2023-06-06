@@ -32,6 +32,10 @@ class Peminjaman extends BaseController
     {
         $data = $this->request->getPost();
         $this->PeminjamanModel->save($data);
+
+        $msg['pesan'] = session()->getFlashdata('pesan');
+
+        return $this->response->setJSON($msg);
     }
 
     public function delete()

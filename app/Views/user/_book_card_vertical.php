@@ -1,4 +1,4 @@
-<a href="baca/<?= $id ?>">
+<a href="javascript:simpan(<?= $id ?>)">
     <div class="card">
         <div class="card-content p-2 mb-0">
             <img class="card-img-top card-img-bottom img-fluid" src="./uploads/<?= $id ?>-sampul.jpg" alt="Card image cap" style="height: 20rem">

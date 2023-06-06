@@ -55,11 +55,11 @@
                     fk_ebook: id,
                     fk_masyarakat: <?= $masyarakat['id'] ?>
                 },
-                success: function() {
-                    alert('Berhasil dipinjam')
+                success: function(response) {
+                    alert(response.pesan)
                 },
                 error: function() {
-                    alert('<?= session()->getFlashdata('pesan') ?>')
+                    alert('stok sudah habis')
                 }
             })
         <?php else : ?>

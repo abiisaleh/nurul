@@ -15,10 +15,10 @@
                         <i class="bi bi-bookmark mx-1"></i>
                         Pinjam
                     </button>
-                    <a class="btn btn-sm icon icon-left btn-primary block" href="baca/<?= $id ?>">
+                    <!-- <a class="btn btn-sm icon icon-left btn-primary block" href="baca/<?= $id ?>">
                         <i class="bi bi-book mx-1"></i>
                         Baca
-                    </a>
+                    </a> -->
                 </div>
             </div>
         </div>

@@ -63,8 +63,10 @@ class PeminjamanModel extends Model
 
         if ($stok >= 10) {
             session()->setFlashdata('pesan', 'stok sudah habis');
-            return $this->abort();
+            return $data['data'] = []; //kosongkan data
         }
+
+        session()->setFlashdata('pesan', 'Buku Berhasil dipinjam. sisa stok ' . $stok . ' buku');
 
         $this->where('fk_ebook', $ebook);
 
@@ -80,7 +82,7 @@ class PeminjamanModel extends Model
 
         if (!empty($cekBuku)) {
             session()->setFlashdata('pesan', 'buku sudah dipinjam');
-            return $this->abort();
+            return $data['data'] = []; //kosongkan data
         }
 
         return $data;

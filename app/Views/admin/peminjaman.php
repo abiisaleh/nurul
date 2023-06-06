@@ -81,16 +81,12 @@
 
 <?php $this->endsection('content'); ?>
 
-<?php $this->section('style'); ?>
-<link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css" />
-
-<link rel="stylesheet" href="./assets/compiled/css/table-datatable-jquery.css" />
-<?php $this->endsection('style'); ?>
-
 <?php $this->section('script'); ?>
 <script src="assets/extensions/jquery/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
 <script src="assets/static/js/pages/datatables.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
 
 <script>
   $.getJSON('admin/masyarakat/show', function(data) {
@@ -137,9 +133,9 @@
         "data": "status",
         "render": function(data) {
           if (data == 'pinjam') {
-            return '<span class="badge bg-warning text-dark">'+data+'</span>'
+            return '<span class="badge bg-warning text-dark">' + data + '</span>'
           } else {
-            return '<span class="badge bg-success">'+data+'</span>'
+            return '<span class="badge bg-success">' + data + '</span>'
           }
         }
       },

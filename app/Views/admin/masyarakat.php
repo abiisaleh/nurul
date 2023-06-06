@@ -114,22 +114,28 @@
     processing: true,
     ajax: window.location.href + '/show',
     columns: [{
-        "title": "#","data": "kode_id"
+        "title": "#",
+        "data": "kode_id"
       },
       {
-        "title": "Nama","data": "nama"
+        "title": "Nama",
+        "data": "nama"
       },
       {
-        "title": "Jenis Kelamin","data": "jenis_kelamin"
+        "title": "Jenis Kelamin",
+        "data": "jenis_kelamin"
       },
       {
-        "title": "Alamat","data": "alamat"
+        "title": "Alamat",
+        "data": "alamat"
       },
       {
-        "title": "Telp","data": "telp"
+        "title": "Telp",
+        "data": "telp"
       },
       {
-        "title": "Tanggal Lahir","data": "tanggal_lahir"
+        "title": "Tanggal Lahir",
+        "data": "tanggal_lahir"
       },
       {
         "title": "Aksi"
