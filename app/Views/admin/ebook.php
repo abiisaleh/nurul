@@ -5,6 +5,9 @@
   <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#modal-add">
     <i class="bi bi-plus"></i> Tambah Data
   </button>
+  <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#modal-stok">
+    <i class="bi bi-gear"></i> Stok
+  </button>
 </div>
 <?php $this->endsection('tools'); ?>
 
@@ -104,6 +107,45 @@
       </div>
     </div>
   </div>
+  </div>
+
+  <!--Stok Modal -->
+  <div class="modal fade text-left" id="modal-stok" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myModalLabel1">
+            Stok utuk semua buku
+          </h5>
+          <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+            <i data-feather="x"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form" id="form-stok">
+            <?= csrf_field(); ?>
+            <input type="text" id="inputid" name="id" value="1" hidden>
+            <div class="form-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="inputstok">Jumlah Stok</label>
+                </div>
+                <div class="col-md-8 form-group">
+                  <input type="number" id="inputstok" class="form-control" name="stok" placeholder="-" value="10" />
+                </div>
+
+                <div class="col-sm-12 d-flex justify-content-end">
+                  <button type="submit" class="btn btn-primary me-1 mb-1">
+                    Submit
+                  </button>
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 </section>
 
 
@@ -142,7 +184,7 @@
         method: 'POST',
         withCredentials: false,
         headers: {},
-        timeout: 7000,
+        timeout: 30000,
         onload: function(response) {
           console.log(response)
         },
@@ -170,22 +212,28 @@
     processing: true,
     ajax: window.location.href + '/show',
     columns: [{
-        "title": "#", "data": "kode_id"
+        "title": "#",
+        "data": "kode_id"
       },
       {
-        "title": "Judul", "data": "judul"
+        "title": "Judul",
+        "data": "judul"
       },
       {
-        "title": "Penulis", "data": "penulis"
+        "title": "Penulis",
+        "data": "penulis"
       },
       {
-        "title": "Penerbit", "data": "penerbit"
+        "title": "Penerbit",
+        "data": "penerbit"
       },
       {
-        "title": "Rilis", "data": "rilis"
+        "title": "Rilis",
+        "data": "rilis"
       },
       {
-        "title": "Kategori", "data": "kategori"
+        "title": "Kategori",
+        "data": "kategori"
       },
       {
         "title": "Aksi"
@@ -208,6 +256,21 @@
       success: function() {
         $('#modal-add').modal('hide')
         dataTable.ajax.reload()
+        $('#form-add')[0].reset()
+      }
+    })
+  })
+
+  //Tambah Data
+  $('#form-stok').submit(function(e) {
+    e.preventDefault()
+    $.ajax({
+      url: window.location.href + '/stok',
+      type: 'POST',
+      data: $(this).serialize(),
+      success: function() {
+        $('#modal-add').modal('hide')
+        alert('stok berhasil diperbarui');
         $('#form-add')[0].reset()
       }
     })

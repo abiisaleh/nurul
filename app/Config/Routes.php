@@ -49,6 +49,7 @@ $routes->post('admin/kategori/delete', 'admin\Kategori::delete');
 $routes->get('admin/ebook', 'admin\Ebook::index');
 $routes->get('admin/ebook/show', 'admin\Ebook::show');
 $routes->post('admin/ebook/save', 'admin\Ebook::save');
+$routes->post('admin/ebook/stok', 'admin\Ebook::stok');
 $routes->post('admin/ebook/delete', 'admin\Ebook::delete');
 $routes->post('admin/ebook/upload', 'admin\Ebook::upload');
 

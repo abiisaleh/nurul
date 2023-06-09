@@ -9,11 +9,11 @@
 <?php endif; ?>
 <section class="section">
     <div class="row">
-        <div class="col-6 col-md-3">
-            <?php foreach ($terbaru as $buku) : ?>
+        <?php foreach ($terbaru as $buku) : ?>
+            <div class="col-6 col-md-3">
                 <?= view('user/_book_card_vertical', $buku) ?>
-            <?php endforeach; ?>
-        </div>
+            </div>
+        <?php endforeach; ?>
     </div>
 
     <div class="page-heading">

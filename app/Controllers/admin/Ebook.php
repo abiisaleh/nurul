@@ -4,14 +4,17 @@ namespace App\Controllers\admin;
 
 use App\Controllers\BaseController;
 use App\Models\EbookModel;
+use App\Models\StokModel;
 
 class Ebook extends BaseController
 {
     protected $EbookModel;
+    protected $StokModel;
 
     public function __construct()
     {
         $this->EbookModel = new EbookModel();
+        $this->StokModel = new StokModel();
     }
 
     public function index()
@@ -59,9 +62,9 @@ class Ebook extends BaseController
             } else {
                 $namaFile = 'sampul.jpg';
             }
+            $file->move(WRITEPATH . 'uploads', $namaFile, true);
         }
 
-        $file->move(WRITEPATH . 'uploads', $namaFile, true);
         return json_encode(['status' => 'success']);
     }
 
@@ -69,5 +72,11 @@ class Ebook extends BaseController
     {
         $id = $this->request->getPost('id');
         $this->EbookModel->delete($id);
+    }
+
+    public function stok()
+    {
+        $stok = $this->request->getPost();
+        $this->StokModel->save($stok);
     }
 }

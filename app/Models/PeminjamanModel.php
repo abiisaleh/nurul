@@ -57,16 +57,19 @@ class PeminjamanModel extends Model
 
     public function cekStok($data)
     {
+        $jumlah = $this->db->table('stok')->getWhere('id = 1')->getResultArray()[0]['stok'];
         $ebook = $data['data']['fk_ebook'];
 
         $stok = $this->where('fk_ebook', $ebook)->where('status', 'pinjam')->countAllResults();
 
-        if ($stok >= 10) {
+        if ($stok >= $jumlah) {
             session()->setFlashdata('pesan', 'stok sudah habis');
             return $data['data'] = []; //kosongkan data
         }
 
-        session()->setFlashdata('pesan', 'Buku Berhasil dipinjam. sisa stok ' . $stok . ' buku');
+        $sisa = $jumlah - $stok - 1;
+
+        session()->setFlashdata('pesan', 'Buku Berhasil dipinjam. sisa stok ' . $sisa . ' buku');
 
         $this->where('fk_ebook', $ebook);
 
