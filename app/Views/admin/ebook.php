@@ -1,15 +1,17 @@
 <?php $this->extend('layout'); ?>
 
-<?php $this->section('tools'); ?>
-<div class="float-start float-sm-end">
-  <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#modal-add">
-    <i class="bi bi-plus"></i> Tambah Data
-  </button>
-  <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#modal-stok">
-    <i class="bi bi-gear"></i> Stok
-  </button>
-</div>
-<?php $this->endsection('tools'); ?>
+<?php if (in_groups('admin')) : ?>
+  <?php $this->section('tools'); ?>
+  <div class="float-start float-sm-end">
+    <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#modal-add">
+      <i class="bi bi-plus"></i> Tambah Data
+    </button>
+    <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#modal-stok">
+      <i class="bi bi-gear"></i> Stok
+    </button>
+  </div>
+  <?php $this->endsection('tools'); ?>
+<?php endif ?>
 
 <?php $this->section('content'); ?>
 <section class="section">
@@ -235,15 +237,16 @@
         "title": "Kategori",
         "data": "kategori"
       },
-      {
-        "title": "Aksi"
-      },
+      <?php if (in_groups('admin')) : ?> {
+          "title": "Aksi",
+          "width": 100,
+          "data": null,
+          "render": function() {
+            return "<button class='btn btn-sm btn-danger btnHapus'>Hapus</button> <button class='btn btn-sm btn-warning btnEdit'>Edit</button>"
+          }
+        },
+      <?php endif ?>
     ],
-    columnDefs: [{
-      "targets": -1,
-      "data": null,
-      "defaultContent": "<button class='btn btn-sm btn-danger btnHapus'>Hapus</button> <button class='btn btn-sm btn-warning btnEdit'>Edit</button>"
-    }],
   })
 
   //Tambah Data

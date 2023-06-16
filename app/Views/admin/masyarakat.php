@@ -1,13 +1,5 @@
 <?php $this->extend('layout'); ?>
 
-<?php $this->section('tools'); ?>
-<div class="float-start float-sm-end">
-  <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#modal-add">
-    <i class="bi bi-plus"></i> Tambah Data
-  </button>
-</div>
-<?php $this->endsection('tools'); ?>
-
 <?php $this->section('content'); ?>
 <section class="section">
   <div class="card">
@@ -24,7 +16,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="myModalLabel1">
-            Tambah Data
+            Ubah Data
           </h5>
           <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
             <i data-feather="x"></i>
@@ -137,15 +129,16 @@
         "title": "Tanggal Lahir",
         "data": "tanggal_lahir"
       },
-      {
-        "title": "Aksi"
-      },
-    ],
-    columnDefs: [{
-      "targets": -1,
-      "data": null,
-      "defaultContent": "<button class='btn btn-sm btn-danger btnHapus'>Hapus</button> <button class='btn btn-sm btn-warning btnEdit'>Edit</button>"
-    }, ]
+      <?php if (in_groups('admin')) : ?> {
+          "title": "Aksi",
+          "width": 100,
+          "data": null,
+          "render": function() {
+            return "<button class='btn btn-sm btn-danger btnHapus'>Hapus</button> <button class='btn btn-sm btn-warning btnEdit'>Edit</button>"
+          }
+        },
+      <?php endif ?>
+    ]
   })
 
   //Tambah Data

@@ -1,13 +1,5 @@
 <?php $this->extend('layout'); ?>
 
-<?php $this->section('tools'); ?>
-<div class="float-start float-sm-end">
-  <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#modal-add">
-    <i class="bi bi-plus"></i> Tambah Data
-  </button>
-</div>
-<?php $this->endsection('tools'); ?>
-
 <?php $this->section('content'); ?>
 <section class="section">
   <div class="card">
@@ -147,15 +139,16 @@
         "title": "Buku",
         "data": "ebook"
       },
-      {
-        "title": "Aksi"
-      },
-    ],
-    columnDefs: [{
-      "targets": -1,
-      "data": null,
-      "defaultContent": "<button class='btn btn-sm btn-danger btnHapus'>Hapus</button> <button class='btn btn-sm btn-warning btnEdit'>Edit</button>"
-    }, ]
+      <?php if (in_groups('admin')) : ?> {
+          "title": "Aksi",
+          "width": 100,
+          "data": null,
+          "render": function() {
+            return "<button class='btn btn-sm btn-danger btnHapus'>Hapus</button> <button class='btn btn-sm btn-warning btnEdit'>Edit</button>"
+          }
+        },
+      <?php endif ?>
+    ]
   })
 
   //Tambah Data
