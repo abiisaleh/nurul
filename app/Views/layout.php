@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?= $title ?> - PerpusOnline</title>
+    <title><?= $title ?> - Digilib</title>
     <base href="<?= base_url() ?>">
 
     <link rel="shortcut icon" href="./assets/compiled/svg/favicon.svg" type="image/x-icon" />
@@ -126,7 +126,7 @@
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
-                        <p>2023 &copy; PerpusOnline</p>
+                        <p>2023 &copy; Digilib Balai Bahasa Papua</p>
                     </div>
                     <div class="float-end">
                         <p>

@@ -148,7 +148,10 @@
           }
         },
       <?php endif ?>
-    ]
+    ],
+    order: [
+      [1, 'desc']
+    ],
   })
 
   //Tambah Data

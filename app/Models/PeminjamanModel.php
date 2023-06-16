@@ -17,7 +17,7 @@ class PeminjamanModel extends Model
     protected $allowedFields    = ['tanggal_pinjam', 'tanggal_kembali', 'status', 'fk_masyarakat', 'fk_ebook'];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'tanggal_pinjam';
     protected $updatedField  = 'tanggal_kembali';
