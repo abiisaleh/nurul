@@ -31,37 +31,38 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-title">Menu</li>
+                <?php if (!logged_in() or in_groups('masyarakat')) : ?>
+                    <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item" id="Terbaru">
-                    <a href="<?= base_url() ?>" class="sidebar-link">
-                        <i class="bi bi-compass-fill"></i>
-                        <span>Jelajah</span>
-                    </a>
-                </li>
+                    <li class="sidebar-item" id="Terbaru">
+                        <a href="<?= base_url() ?>" class="sidebar-link">
+                            <i class="bi bi-compass-fill"></i>
+                            <span>Jelajah</span>
+                        </a>
+                    </li>
 
-                <li class="sidebar-item" id="Buku">
-                    <a href="buku" class="sidebar-link">
-                        <i class="bi bi-book-half"></i>
-                        <span>Buku</span>
-                    </a>
-                </li>
+                    <li class="sidebar-item" id="Buku">
+                        <a href="buku" class="sidebar-link">
+                            <i class="bi bi-book-half"></i>
+                            <span>Buku</span>
+                        </a>
+                    </li>
 
-                <li class="sidebar-item" id="Pinjam">
-                    <a href="pinjam" class="sidebar-link">
-                        <i class="bi bi-bookmark-fill"></i>
-                        <span>Pinjam</span>
-                    </a>
-                </li>
+                    <li class="sidebar-item" id="Pinjam">
+                        <a href="pinjam" class="sidebar-link">
+                            <i class="bi bi-bookmark-fill"></i>
+                            <span>Pinjam</span>
+                        </a>
+                    </li>
 
-                <li class="sidebar-item" id="Informasi">
-                    <a href="about" class="sidebar-link">
-                        <i class="bi bi-exclamation-circle-fill"></i>
-                        <span>Informasi</span>
-                    </a>
-                </li>
+                    <li class="sidebar-item" id="Informasi">
+                        <a href="about" class="sidebar-link">
+                            <i class="bi bi-exclamation-circle-fill"></i>
+                            <span>Informasi</span>
+                        </a>
+                    </li>
 
-                <?php if (logged_in() & !in_groups('masyarakat')) : ?>
+                <?php elseif (logged_in() & !in_groups('masyarakat')) : ?>
 
                     <li class="sidebar-title">Admin</li>
 
@@ -86,12 +87,14 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item" id="Data Masyarakat">
-                        <a href="admin/masyarakat" class="sidebar-link">
-                            <i class="bi bi-people-fill"></i>
-                            <span>Data Masyarakat</span>
-                        </a>
-                    </li>
+                    <?php if (in_groups('admin')) : ?>
+                        <li class="sidebar-item" id="Data Masyarakat">
+                            <a href="admin/masyarakat" class="sidebar-link">
+                                <i class="bi bi-people-fill"></i>
+                                <span>Data Masyarakat</span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
 
                     <li class="sidebar-item" id="Data Peminjaman">
                         <a href="admin/peminjaman" class="sidebar-link">
