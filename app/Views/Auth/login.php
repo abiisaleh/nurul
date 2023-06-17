@@ -73,7 +73,7 @@
 							<?= lang('Auth.loginAction') ?>
 						</button>
 					</form>
-					<div class="text-center mt-5 text-lg fs-4">
+					<div class="text-center mt-3 text-lg fs-4">
 						<?php if ($config->allowRegistration) : ?>
 							<p class="text-gray-600">
 								Belum punya akun. <a href="<?= url_to('register') ?>" class="font-bold"><?= lang('Auth.needAnAccount') ?></a>
