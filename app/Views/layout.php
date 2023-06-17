@@ -142,15 +142,6 @@
     <script src="assets/static/js/components/dark.js"></script>
     <script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/extensions/jquery/jquery.min.js"></script>
-    <script>
-        $(function() {
-            var url = window.location.href
-            $('.sidebar-item').filter(function() {
-                return this.id == '<?= $title ?>'
-            }).addClass('active')
-        })
-    </script>
-
     <script src="assets/compiled/js/app.js"></script>
 
     <!-- DataTable -->

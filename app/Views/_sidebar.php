@@ -1,3 +1,10 @@
+<?php
+$uri = service('uri')->getSegments();
+
+$uri0 = $uri[0] ?? 'index';
+$uri1 = $uri[1] ?? '';
+?>
+
 <div id="sidebar">
     <div class="sidebar-wrapper active">
         <div class="sidebar-header position-relative">
@@ -34,28 +41,28 @@
                 <?php if (!logged_in() or in_groups('masyarakat')) : ?>
                     <li class="sidebar-title">Menu</li>
 
-                    <li class="sidebar-item" id="Terbaru">
+                    <li class="sidebar-item <?= ($uri0 == 'index') ? 'active' : '' ?>" id="Terbaru">
                         <a href="<?= base_url() ?>" class="sidebar-link">
                             <i class="bi bi-compass-fill"></i>
                             <span>Jelajah</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item" id="Buku">
+                    <li class="sidebar-item <?= ($uri0 == 'buku') ? 'active' : '' ?>" id="Buku">
                         <a href="buku" class="sidebar-link">
                             <i class="bi bi-book-half"></i>
                             <span>Buku</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item" id="Pinjam">
+                    <li class="sidebar-item <?= ($uri0 == 'pinjam') ? 'active' : '' ?>" id="Pinjam">
                         <a href="pinjam" class="sidebar-link">
                             <i class="bi bi-bookmark-fill"></i>
                             <span>Pinjam</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item" id="Informasi">
+                    <li class="sidebar-item <?= ($uri0 == 'about') ? 'active' : '' ?>" id="Informasi">
                         <a href="about" class="sidebar-link">
                             <i class="bi bi-exclamation-circle-fill"></i>
                             <span>Informasi</span>
@@ -66,21 +73,21 @@
 
                     <li class="sidebar-title">Admin</li>
 
-                    <li class="sidebar-item" id="Dashboard">
+                    <li class="sidebar-item <?= ($uri0 == 'admin' & $uri1 == '') ? 'active' : '' ?>" id="Dashboard">
                         <a href="admin" class="sidebar-link">
                             <i class="bi bi-speedometer"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item" id="Data Buku">
+                    <li class="sidebar-item <?= ($uri0 == 'admin' & $uri1 == 'ebook') ? 'active' : '' ?>" id="Data Buku">
                         <a href="admin/ebook" class="sidebar-link">
                             <i class="bi bi-book-fill"></i>
                             <span>Data Buku</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item" id="Data Kategori">
+                    <li class="sidebar-item <?= ($uri0 == 'admin' & $uri1 == 'kategori') ? 'active' : '' ?>" id="Data Kategori">
                         <a href="admin/kategori" class="sidebar-link">
                             <i class="bi bi-grid-fill"></i>
                             <span>Data Kategori</span>
@@ -88,7 +95,7 @@
                     </li>
 
                     <?php if (in_groups('admin')) : ?>
-                        <li class="sidebar-item" id="Data Masyarakat">
+                        <li class="sidebar-item <?= ($uri0 == 'admin' & $uri1 == 'masyarakat') ? 'active' : '' ?>" id="Data Masyarakat">
                             <a href="admin/masyarakat" class="sidebar-link">
                                 <i class="bi bi-people-fill"></i>
                                 <span>Data Masyarakat</span>
@@ -96,7 +103,7 @@
                         </li>
                     <?php endif; ?>
 
-                    <li class="sidebar-item" id="Data Peminjaman">
+                    <li class="sidebar-item <?= ($uri0 == 'admin' & $uri1 == 'peminjaman') ? 'active' : '' ?>" id="Data Peminjaman">
                         <a href="admin/peminjaman" class="sidebar-link">
                             <i class="bi bi-bookmark-check-fill"></i>
                             <span>Data Peminjaman</span>
@@ -105,7 +112,7 @@
 
                     <?php if (in_groups('kepala')) : ?>
 
-                        <li class="sidebar-item" id="Laporan">
+                        <li class="sidebar-item <?= ($uri0 == 'admin' & $uri1 == 'laporan') ? 'active' : '' ?>" id="Laporan">
                             <a href="admin/laporan" class="sidebar-link">
                                 <i class="bi bi-printer-fill"></i>
                                 <span>Laporan</span>
