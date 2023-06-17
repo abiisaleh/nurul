@@ -39,6 +39,11 @@ $routes->get('baca(:any)', 'User::baca$1');
 $routes->post('api/pinjam/save', 'admin\Peminjaman::save');
 $routes->post('api/masyarakat/save', 'admin\Masyarakat::save');
 
+//login
+$routes->get('login', 'AuthController::login');
+$routes->post('login', 'AuthController::attemptLogin');
+$routes->get('register', 'AuthController::register');
+
 $routes->get('admin', 'admin\Dashboard::index');
 
 $routes->get('admin/kategori', 'admin\Kategori::index');

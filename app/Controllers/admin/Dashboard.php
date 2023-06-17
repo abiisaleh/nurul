@@ -13,7 +13,7 @@ class Dashboard extends BaseController
         $PeminjamanModel = model('PeminjamanModel');
 
         $data['title'] = 'Dashboard';
-        $data['buku'] = $EbookModel->populer()->findAll(3);
+        $data['buku'] = $EbookModel->populer()->findAll(4);
         $data['count'] = [
             'buku' => $EbookModel->countAllResults(),
             'masyarakat' => $MasyarakatModel->countAllResults(),
