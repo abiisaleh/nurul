@@ -58,8 +58,9 @@
                 success: function(response) {
                     alert(response.pesan)
                 },
-                error: function() {
-                    alert('stok sudah habis')
+                error: function(response) {
+                    console.log(response)
+                    alert(response.pesan)
                 }
             })
         <?php else : ?>

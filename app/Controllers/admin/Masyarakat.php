@@ -36,6 +36,7 @@ class Masyarakat extends BaseController
         $this->MasyarakatModel->save($data);
 
         if (!$this->request->isAJAX()) {
+            session()->setFlashdata('pesan', 'Data berhasil disimpan');
             return redirect()->back();
         }
     }

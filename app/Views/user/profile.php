@@ -2,6 +2,12 @@
 
 <?php $this->section('content'); ?>
 <!-- Basic Horizontal form layout section start -->
+<?php if (session()->getFlashdata('pesan')) : ?>
+    <div class="alert alert-success" role="alert">
+        <strong><?= session()->getFlashdata('pesan') ?></strong>
+    </div>
+<?php endif; ?>
+
 <section id="basic-horizontal-layouts" class="section">
     <div class="row match-height">
         <div class="col-md-6 col-12">
