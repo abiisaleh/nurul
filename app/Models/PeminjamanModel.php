@@ -73,8 +73,6 @@ class PeminjamanModel extends Model
 
         session()->setFlashdata('pesan', 'Buku Berhasil dipinjam. sisa stok ' . $sisa . ' buku');
 
-        // $this->where('fk_ebook', $ebook);
-
         return $data;
     }
 
