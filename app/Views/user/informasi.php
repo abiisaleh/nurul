@@ -16,7 +16,7 @@
                         Balai Bahasa Papua memiliki sebuah perpustakaan sebagai pusat kegiatan pengembangan minat baca dan kebiasaan membaca untuk berbagai kalangan.
                     </p>
                     <p class="card-text">
-                        Digital Libray (Digilab) Balai Bahasa Papua bertujuan untuk memberikan layanan perpustakaan online dimana masyarakat dapat meminjam dan membaca buku yang tersedia secara online.
+                        Digital Libray (Digilib) Balai Bahasa Papua bertujuan untuk memberikan layanan perpustakaan online dimana masyarakat dapat meminjam dan membaca buku yang tersedia secara online.
                     </p>
                 </div>
             </div>
