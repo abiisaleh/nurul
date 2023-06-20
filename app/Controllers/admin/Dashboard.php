@@ -17,7 +17,7 @@ class Dashboard extends BaseController
         $data['count'] = [
             'buku' => $EbookModel->countAllResults(),
             'masyarakat' => $MasyarakatModel->countAllResults(),
-            'peminjaman' => $PeminjamanModel->countAllResults(),
+            'peminjaman' => $PeminjamanModel->onHold()->countAllResults(),
         ];
 
         //data bulan dalam array

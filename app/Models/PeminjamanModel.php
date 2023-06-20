@@ -127,4 +127,9 @@ class PeminjamanModel extends Model
 
         return $data;
     }
+
+    public function onHold()
+    {
+        return $this->where('status', 'pinjam');
+    }
 }

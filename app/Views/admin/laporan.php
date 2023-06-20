@@ -118,6 +118,9 @@
                 "data": "ebook"
             },
         ],
+        order: [
+            [1, 'desc']
+        ],
 
     })
 
