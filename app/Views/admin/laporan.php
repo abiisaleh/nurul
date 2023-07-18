@@ -8,6 +8,24 @@
 <div class="section">
     <div class="card">
         <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <div class="col-md-4">
+                        <label for="inputnama">Awal Tanggal</label>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <input type="text" id="min" name="min" class="form-control">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="col-md-4">
+                        <label for="inputnama">Akhir Tanggal</label>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <input type="text" id="max" name="max" class="form-control">
+                    </div>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table class="table table-hover" id="tabel"></table>
             </div>
@@ -66,5 +84,40 @@
 
     //place button print
     dataTable.buttons().container().appendTo($('#btn-tools'))
+
+    //filter by date
+    var minDate, maxDate;
+
+    // Custom filtering function which will search data in column four between two values
+    $.fn.dataTable.ext.search.push(
+        function(settings, data, dataIndex) {
+            var min = minDate.val();
+            var max = maxDate.val();
+            var date = new Date(data[4]);
+
+            if (
+                (min === null && max === null) ||
+                (min === null && date <= max) ||
+                (min <= date && max === null) ||
+                (min <= date && date <= max)
+            ) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+    // Create date inputs
+    minDate = new DateTime($('#min'), {
+        format: 'DD MMMM YYYY'
+    });
+    maxDate = new DateTime($('#max'), {
+        format: 'DD MMMM YYYY'
+    });
+
+    // Refilter the table
+    $('#min, #max').on('change', function() {
+        dataTable.draw();
+    });
 </script>
 <?php $this->endSection('script'); ?>
