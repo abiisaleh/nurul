@@ -32,7 +32,7 @@ class PeminjamanModel extends Model
     // Callbacks
     protected $allowCallbacks = true;
     protected $beforeInsert   = ['cekStok', 'cekBuku'];
-    protected $afterInsert    = ['updateTanggal'];
+    // protected $afterInsert    = ['updateTanggal'];
     protected $beforeUpdate   = [];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
@@ -57,10 +57,11 @@ class PeminjamanModel extends Model
 
     public function cekStok($data)
     {
-        $jumlah = $this->db->table('stok')->getWhere('id = 1')->getResultArray()[0]['stok'];
         $ebook = $data['data']['fk_ebook'];
+        $jumlah = $this->db->table('ebook')->where('id', $ebook)->get()->getResultArray()[0]['stok'];
 
         $dipinjam = $this->where('fk_ebook', $ebook)->where('status', 'pinjam')->countAllResults();
+
 
         $stok = $jumlah - $dipinjam;
 
@@ -115,7 +116,8 @@ class PeminjamanModel extends Model
 
     public function updateTanggal($data)
     {
-        $data['tanggal_kembali'] = date('Y-m-d', strtotime('+1 week'));
+        $waktu = $this->db->table('ebook')->where('id', $data['fk_ebook'])->get()->getResultArray()[0]['waktu_peminjaman'];
+        $data['tanggal_kembali'] = date('Y-m-d', strtotime('+' . $waktu . ' days'));
         return $this->save($data);
     }
 

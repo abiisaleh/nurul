@@ -4,7 +4,6 @@ namespace App\Controllers\admin;
 
 use App\Controllers\BaseController;
 use App\Models\EbookModel;
-use App\Models\StokModel;
 
 class Ebook extends BaseController
 {
@@ -14,7 +13,6 @@ class Ebook extends BaseController
     public function __construct()
     {
         $this->EbookModel = new EbookModel();
-        $this->StokModel = new StokModel();
     }
 
     public function index()
@@ -34,6 +32,10 @@ class Ebook extends BaseController
     public function save()
     {
         $data = $this->request->getPost();
+        //kalau sudah ada
+        if ($this->EbookModel->find($data['id'])) {
+            return $this->EbookModel->save($data);
+        };
         $this->EbookModel->insert($data);
 
         $lastID = $this->EbookModel->getInsertID();
@@ -72,11 +74,5 @@ class Ebook extends BaseController
     {
         $id = $this->request->getPost('id');
         $this->EbookModel->delete($id);
-    }
-
-    public function stok()
-    {
-        $stok = $this->request->getPost();
-        $this->StokModel->save($stok);
     }
 }

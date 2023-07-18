@@ -6,9 +6,6 @@
     <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#modal-add">
       <i class="bi bi-plus"></i> Tambah Data
     </button>
-    <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#modal-stok">
-      <i class="bi bi-gear"></i> Stok
-    </button>
   </div>
   <?php $this->endsection('tools'); ?>
 <?php endif ?>
@@ -72,6 +69,13 @@
                   </div>
 
                   <div class="col-md-4">
+                    <label for="inputstok">Stok</label>
+                  </div>
+                  <div class="col-md-8 form-group">
+                    <input type="number" id="inputstok" class="form-control" name="stok" placeholder="-" />
+                  </div>
+
+                  <div class="col-md-4">
                     <label for="inputrilis">Rilis</label>
                   </div>
                   <div class="col-md-8 form-group">
@@ -89,6 +93,19 @@
                     </fieldset>
                   </div>
 
+                  <div class="col-md-4">
+                    <label for="inputkategori">Waktu Peminjaman</label>
+                  </div>
+                  <div class="col-md-8 form-group">
+                    <fieldset class="form-group">
+                      <select class="form-select" id="inputwaktu" name="waktu_peminjaman">
+                        <option value="3">3 hari</option>
+                        <option value="7">7 hari</option>
+                        <option value="14">14 hari</option>
+                      </select>
+                    </fieldset>
+                  </div>
+
                   <div class="position-relative">
                     <input type="file" name="buku" class="basic-filepond" />
                     <span class="badge bg-danger position-absolute" style="top: -.5rem; right: 1.4rem">pdf</span>
@@ -102,44 +119,6 @@
                       Reset
                     </button>
                   </div>
-                </div>
-              </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  <!--Stok Modal -->
-  <div class="modal fade text-left" id="modal-stok" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="myModalLabel1">
-            Stok utuk semua buku
-          </h5>
-          <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
-            <i data-feather="x"></i>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form class="form" id="form-stok">
-            <?= csrf_field(); ?>
-            <input type="text" id="inputid" name="id" value="1" hidden>
-            <div class="form-body">
-              <div class="row">
-                <div class="col-md-4">
-                  <label for="inputstok">Jumlah Stok</label>
-                </div>
-                <div class="col-md-8 form-group">
-                  <input type="number" id="inputstok" class="form-control" name="stok" placeholder="-" value="10" />
-                </div>
-
-                <div class="col-sm-12 d-flex justify-content-end">
-                  <button type="submit" class="btn btn-primary me-1 mb-1">
-                    Submit
-                  </button>
                 </div>
               </div>
           </form>
@@ -237,6 +216,17 @@
         "title": "Kategori",
         "data": "kategori"
       },
+      {
+        "title": "Stok",
+        "data": "stok",
+      },
+      {
+        "title": "waktu",
+        "data": "waktu_peminjaman",
+        "render": function(waktu_peminjaman) {
+          return waktu_peminjaman + " hari"
+        }
+      },
       <?php if (in_groups('admin')) : ?> {
           "title": "Aksi",
           "width": 100,
@@ -259,21 +249,6 @@
       success: function() {
         $('#modal-add').modal('hide')
         dataTable.ajax.reload()
-        $('#form-add')[0].reset()
-      }
-    })
-  })
-
-  //Tambah Data
-  $('#form-stok').submit(function(e) {
-    e.preventDefault()
-    $.ajax({
-      url: window.location.href + '/stok',
-      type: 'POST',
-      data: $(this).serialize(),
-      success: function() {
-        $('#modal-add').modal('hide')
-        alert('stok berhasil diperbarui');
         $('#form-add')[0].reset()
       }
     })
@@ -306,8 +281,10 @@
     $('#inputjudul').val(data.judul);
     $('#inputpenulis').val(data.penulis);
     $('#inputpenerbit').val(data.penerbit);
+    $('#inputstok').val(data.stok);
     $('#inputrilis').val(data.rilis);
     $('#inputkategori').val(data.fk_kategori);
+    $('#inputwaktu').val(data.waktu_peminjaman);
 
     $('#modal-add').modal('show');
   });

@@ -32,7 +32,8 @@ class Peminjaman extends BaseController
     {
         $data = $this->request->getPost();
         try {
-            $this->PeminjamanModel->save($data);
+            // $this->PeminjamanModel->save($data);
+            $this->PeminjamanModel->updateTanggal($data);
             $msg['pesan'] = session()->getFlashdata('pesan');
             return $this->response->setJSON($msg);
         } catch (\Throwable) {

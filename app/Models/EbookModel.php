@@ -14,7 +14,7 @@ class EbookModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['judul', 'penulis', 'penerbit', 'rilis', 'fk_kategori'];
+    protected $allowedFields    = ['judul', 'penulis', 'penerbit', 'rilis', 'fk_kategori', 'stok', 'waktu_peminjaman'];
 
     // Dates
     protected $useTimestamps = false;
