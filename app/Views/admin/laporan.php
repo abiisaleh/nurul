@@ -49,9 +49,11 @@
             'message': 'total buku <?= $total['buku'] ?> <br> total kategori <?= $total['kategori'] ?>',
             'title': '',
             customize: function(win) {
-                $(win.document.body).find('h1')
-                    .addClass('text-center')
-                    .html('Laporan Peminjaman <br> Balai Bahasa Jayapura')
+                $(win.document.body).prepend('<img src="<?= base_url('assets/static/images/logo/Kop.png') ?>" alt="Kop Surat">')
+                // $(win.document.body).find('h1')
+                //     .addClass('text-center')
+                //     .append('<img src="assets/static/images/logo/Kop.png" alt="Kop Surat">')
+                // .html('Laporan Peminjaman <br> Balai Bahasa Jayapura')
             }
         }, ],
         ajax: '<?= base_url('admin/ebook/show') ?>',

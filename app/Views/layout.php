@@ -9,13 +9,33 @@
 
     <link rel="shortcut icon" href="./assets/compiled/png/favicon.png" type="image/x-icon" />
 
-    <?php $this->renderSection('style'); ?>
     <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.4.1/css/dataTables.dateTime.min.css">
     <link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css" />
     <link rel="stylesheet" href="./assets/compiled/css/table-datatable-jquery.css" />
 
     <link rel="stylesheet" href="./assets/compiled/css/app.css" />
     <link rel="stylesheet" href="./assets/compiled/css/app-dark.css" />
+
+    <style media="print">
+        /* Menghilangkan URL dan tanggal pada header */
+        @page {
+            size: auto;
+            /* Atur ukuran halaman sesuai dengan ukuran kertas yang digunakan */
+            margin: 0;
+            /* Mengatur margin halaman menjadi 0 */
+        }
+
+        /* Menghilangkan konten pada header dan footer */
+        @page :header {
+            content: none;
+        }
+
+        @page :footer {
+            content: none;
+        }
+    </style>
+
+    <?php $this->renderSection('style'); ?>
 </head>
 
 <body>
