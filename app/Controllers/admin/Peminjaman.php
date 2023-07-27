@@ -31,9 +31,17 @@ class Peminjaman extends BaseController
     public function save()
     {
         $data = $this->request->getPost();
+
+        $id = $this->request->getPost('id') ?? null;
+
         try {
             // $this->PeminjamanModel->save($data);
-            $this->PeminjamanModel->updateTanggal($data);
+            if ($id) {
+                $this->PeminjamanModel->update($id, ['status' => 'selesai']);
+                session()->setFlashdata('pesan', 'buku berhasil dikembalikan');
+            } else {
+                $this->PeminjamanModel->updateTanggal($data);
+            }
             $msg['pesan'] = session()->getFlashdata('pesan');
             return $this->response->setJSON($msg);
         } catch (\Throwable) {

@@ -28,29 +28,9 @@
                                                 <span><?= $Buku['penulis'] ?></span>
                                             </div>
                                         </div>
-                                        <!-- <div class="widget-todo-title-area d-flex align-items-center gap-2">
-                                            <div class="row mx-2">
-                                                <h5 class="me-1 mb-0 text-center">
-                                                    21 Halaman
-                                                </h5>
-                                                <div class="px-0 py-1">
-                                                    <table class="table table-borderless mb-0">
-                                                        <tr>
-                                                            33
-                                                            <td class="col-10">
-                                                                <div class="progress progress-sm progress-warning">
-                                                                    <div class="progress-bar" role="progressbar" style="width: 12%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="col-2 text-center">12%</td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div> -->
                                         <div class="widget-todo-item-action d-flex align-items-center">
                                             <div class="row">
-                                                <button class="btn btn-light-primary mb-1" onclick="kembalikan('<?= $Buku['id'] ?>')">Selesai</button>
+                                                <button class="btn btn-light-primary mb-1" onclick="kembalikan('<?= $Buku['id'] ?>','<?= $Buku['fk_ebook'] ?>')">Selesai</button>
                                                 <a class="btn btn-primary" href="baca/<?= $Buku['fk_ebook'] ?>">Baca</a>
                                             </div>
                                             <i class="bx bx-dots-vertical-rounded font-medium-3 cursor-pointer"></i>
@@ -84,16 +64,17 @@
 
 <script>
     //pinjam buku
-    function kembalikan(id) {
+    function kembalikan(id, ebook) {
         $.ajax({
             url: 'api/pinjam/save',
             type: 'POST',
             data: {
                 id: id,
+                fk_ebook: ebook,
                 status: 'selesai'
             },
-            success: function() {
-                alert('Berhasil dikembalikan')
+            success: function(response) {
+                alert(response.pesan)
                 window.location.reload()
             }
         })
