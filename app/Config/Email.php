@@ -38,7 +38,7 @@ class Email extends BaseConfig
     /**
      * SMTP Password
      */
-    public string $SMTPPass = 'mhxesptxqtabztmn';
+    public string $SMTPPass = 'zuuffkolkguusjbf';
 
     /**
      * SMTP Port
@@ -115,4 +115,3 @@ class Email extends BaseConfig
      */
     public bool $DSN = false;
 }
-
