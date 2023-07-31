@@ -218,7 +218,7 @@
       },
       {
         "title": "Stok",
-        "data": "stok",
+        "data": "sisa",
       },
       {
         "title": "waktu",

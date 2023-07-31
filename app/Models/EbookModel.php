@@ -36,7 +36,7 @@ class EbookModel extends Model
     protected $beforeUpdate   = [];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
-    protected $afterFind      = [];
+    protected $afterFind      = ['sisa'];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
@@ -64,6 +64,20 @@ class EbookModel extends Model
     {
         foreach ($data['data'] as &$row) {
             $row['kode_id'] = 'B-' . str_pad($row['id'], 3, 0, STR_PAD_LEFT);
+        }
+
+        return $data;
+    }
+
+    public function sisa($data)
+    {
+        foreach ($data['data'] as &$ebook) {
+            $dipinjam = $this->db->table('peminjaman')->where('fk_ebook', $ebook['id'])->where('status', 'pinjam')->countAllResults();
+
+            // $dipinjam = $this->join('peminjaman', 'fk_ebook = ebook.id', 'LEFT')->where('status', 'pinjam')->where('ebook.id', $ebook['id'])->selectCount('peminjaman.id', 'sisa')->groupBy('ebook.id');
+
+            $stok = $ebook['stok'];
+            $ebook['sisa'] = $stok - $dipinjam;
         }
 
         return $data;
