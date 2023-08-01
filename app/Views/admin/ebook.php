@@ -191,10 +191,11 @@
     responsive: true,
     autoWidth: false,
     processing: true,
+    order: [],
     ajax: window.location.href + '/show',
     columns: [{
         "title": "#",
-        "data": "kode_id"
+        "data": "kode_id",
       },
       {
         "title": "Judul",

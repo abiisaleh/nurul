@@ -23,7 +23,7 @@ class Ebook extends BaseController
 
     public function show()
     {
-        $data['data'] = $this->EbookModel->kategori()->find();
+        $data['data'] = $this->EbookModel->kategori()->orderBy('id', 'DESC')->find();
         $kodefikasi = $this->EbookModel->kodefikasi($data);
 
         return $this->response->setJSON($kodefikasi);
