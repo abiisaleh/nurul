@@ -49,6 +49,7 @@
             }
         }, ],
         ajax: '<?= base_url('admin/ebook/show') ?>',
+        order: [],
         columns: [{
                 "title": "#",
                 "data": "kode_id"
