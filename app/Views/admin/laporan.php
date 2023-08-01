@@ -43,9 +43,6 @@
             customize: function(win) {
                 $(win.document.body).prepend('<img src="<?= base_url('assets/static/images/logo/Kop.png') ?>" alt="Kop Surat">')
                 $(win.document.body).append('<img src="<?= base_url('assets/static/images/logo/ttd.png') ?>" alt="ttd">')
-                // $(win.document.body).find('table')
-                // .addClass('text-center')')
-                // .html('Laporan Peminjaman <br> Balai Bahasa Jayapura')
             }
         }, ],
         ajax: '<?= base_url('admin/ebook/show') ?>',
