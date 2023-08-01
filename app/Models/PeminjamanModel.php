@@ -31,7 +31,7 @@ class PeminjamanModel extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = ['cekStok', 'cekBuku'];
+    protected $beforeInsert   = ['cekStok', 'cekBuku', 'limit'];
     // protected $afterInsert    = ['updateTanggal'];
     protected $beforeUpdate   = [];
     protected $afterUpdate    = [];
@@ -86,6 +86,21 @@ class PeminjamanModel extends Model
 
         if (!empty($cekBuku)) {
             session()->setFlashdata('pesan', 'buku sudah dipinjam');
+            return $data['data'] = []; //kosongkan data
+        }
+
+        return $data;
+    }
+
+    public function limit($data)
+    {
+        $masyarakat = $data['data']['fk_masyarakat'];
+        $limit = 3;
+
+        $dipinjam = $this->where('fk_masyarakat', $masyarakat)->where('status', 'pinjam')->countAllResults();
+
+        if ($limit <= $dipinjam) {
+            session()->setFlashdata('pesan', 'melebihi batas peminjaman (maksimal 3 buku)');
             return $data['data'] = []; //kosongkan data
         }
 
