@@ -19,28 +19,9 @@
                         <input type="date" id="filterDate" class="form-control">
                     </div>
                 </div>
-
-                <div class="col-12 col-sm-6">
-                    <div class="col-md-4">
-                        <label for="inputTabel">Data</label>
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <select class="form-select" id="inputTabel">
-                            <option>Buku</option>
-                            <option>Kategori</option>
-                            <option>Peminjaman</option>
-                        </select>
-                    </div>
-                </div>
             </div>
             <div class="table-responsive" id="buku">
                 <table class="table table-hover" id="tabel"></table>
-            </div>
-            <div class="table-responsive" id="kategori">
-                <table class="table table-hover" id="tabelkategori"></table>
-            </div>
-            <div class="table-responsive" id="peminjaman">
-                <table class="table table-hover" id="tabelpeminjaman"></table>
             </div>
         </div>
     </div>
@@ -101,105 +82,11 @@
     //place button print
     dataTable.buttons().container().appendTo($('#btn-buku'))
 
-    var dataTablekategori = $('#tabelkategori').DataTable({
-        responsive: true,
-        autoWidth: false,
-        processing: true,
-        searching: false,
-        dom: 'Bfrtip',
-        buttons: [{
-            'extend': 'print',
-            'text': '<i class="bi bi-printer"></i> Cetak',
-            'className': 'btn btn-primary block',
-            'orientation': 'landscape',
-            'message': 'total buku <?= $total['buku'] ?> <br> total kategori <?= $total['kategori'] ?>',
-            'title': '',
-            customize: function(win) {
-                $(win.document.body).prepend('<img src="<?= base_url('assets/static/images/logo/Kop.png') ?>" alt="Kop Surat">')
-                $(win.document.body).append('<img src="<?= base_url('assets/static/images/logo/ttd.png') ?>" alt="ttd">')
-            }
-        }, ],
-        ajax: '<?= base_url('admin/kategori/show') ?>',
-        order: [],
-        columns: [{
-                "title": "#",
-                "data": "kode_id"
-            },
-            {
-                "title": "Kategori",
-                "data": "nama"
-            },
-            {
-                "title": "Total",
-                "data": "total"
-            },
-        ],
-    })
-
-
-    var dataTablePeminjaman = $('#tabelpeminjaman').DataTable({
-        responsive: true,
-        autoWidth: false,
-        processing: true,
-        searching: false,
-        dom: 'Bfrtip',
-        buttons: [{
-            'extend': 'print',
-            'text': '<i class="bi bi-printer"></i> Cetak',
-            'className': 'btn btn-primary block',
-            'orientation': 'landscape',
-            'message': 'total buku <?= $total['buku'] ?> <br> total kategori <?= $total['kategori'] ?>',
-            'title': '',
-            customize: function(win) {
-                $(win.document.body).prepend('<img src="<?= base_url('assets/static/images/logo/Kop.png') ?>" alt="Kop Surat">')
-                $(win.document.body).append('<img src="<?= base_url('assets/static/images/logo/ttd.png') ?>" alt="ttd">')
-            }
-        }, ],
-        ajax: '<?= base_url('admin/peminjaman/show') ?>',
-        order: [],
-        columns: [{
-                "title": "#",
-                "data": "kode_id"
-            },
-            {
-                "title": "Tanggal Pinjam",
-                "data": "tanggal_pinjam"
-            },
-            {
-                "title": "Tanggal Kembali",
-                "data": "tanggal_kembali"
-            },
-            {
-                "title": "Status",
-                "data": "status",
-                "render": function(data) {
-                    if (data == 'pinjam') {
-                        return '<span class="badge bg-warning text-dark">' + data + '</span>'
-                    } else {
-                        return '<span class="badge bg-success">' + data + '</span>'
-                    }
-                }
-            },
-            {
-                "title": "Peminjam",
-                "data": "masyarakat"
-            },
-            {
-                "title": "Buku",
-                "data": "ebook"
-            },
-        ]
-    })
-
 
     // Tambahkan fitur pencarian berdasarkan tanggal
     $('#filterDate').on('keyup change', function() {
         var tanggalCari = $(this).val();
         dataTable.columns(4).search(tanggalCari).draw();
     });
-
-    tabelbuku.style.display = 'block';
-    tabelkategori.style.display = 'none';
-    tabelpeminjaman.style.display = 'none';
 </script>
 <?php $this->endSection('script'); ?>
