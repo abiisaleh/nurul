@@ -49,32 +49,7 @@
 
 <?php $this->section('script'); ?>
 <script>
-    var eSelect = document.getElementById('inputTabel');
-    var tabelbuku = document.getElementById('buku');
-    var tabelpeminjaman = document.getElementById('peminjaman');
-    var tabelkategori = document.getElementById('kategori');
-    eSelect.onchange = function() {
-        $('#btn-buku').addClass('d-none')
-        $('#btn-peminjaman').addClass('d-none')
-        $('#btn-kategori').addClass('d-none')
-
-        tabelbuku.style.display = 'none';
-        tabelkategori.style.display = 'none';
-        tabelpeminjaman.style.display = 'none';
-        if (eSelect.selectedIndex === 0) {
-            tabelbuku.style.display = 'block';
-            $('#btn-buku').removeClass('d-none')
-            dataTable.buttons().container().appendTo($('#btn-buku'))
-        } else if (eSelect.selectedIndex === 1) {
-            tabelkategori.style.display = 'block';
-            $('#btn-kategori').removeClass('d-none')
-            dataTablekategori.buttons().container().appendTo($('#btn-kategori'))
-        } else if (eSelect.selectedIndex === 2) {
-            tabelpeminjaman.style.display = 'block';
-            dataTablePeminjaman.buttons().container().appendTo($('#btn-peminjaman'))
-            $('#btn-peminjaman').removeClass('d-none')
-        }
-    }
+    var name = 'abi'
 
     var dataTable = $('#tabel').DataTable({
         responsive: true,
